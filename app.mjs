@@ -1,8 +1,9 @@
 import express from "express";
 import mongoose from "mongoose";
-import { postProject } from "./controller/ProjectController.mjs";
+import { deleteProject, postProject } from "./controller/ProjectController.mjs";
 import fileUpload from "express-fileupload";
 import { PageRouter } from "./routes/pageRoute.mjs";
+import methodOverride from "method-override";
 
 const app = express();
 
@@ -26,13 +27,16 @@ app.use(
     createParentPath: true,
   })
 );
-
-
+app.use(
+  methodOverride("_method", {
+    methods: ["POST", "GET"],
+  })
+)
 
 //routes
-app.use("/",PageRouter)
-
+app.use("/", PageRouter);
 app.post("/", postProject);
+app.delete("/:id", deleteProject);
 
 app.listen(port, () => {
   console.log(`App is up on port ${port}`);
