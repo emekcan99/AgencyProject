@@ -52,8 +52,6 @@ export const getProject = async (req, res) => {
 
 export const deleteProject = async (req, res) => {
   // console.log(req.params.id)
- 
-
 
   const project = await Project.findOne({ _id: req.params.id });
 
@@ -65,3 +63,22 @@ export const deleteProject = async (req, res) => {
 
   res.redirect("/");
 };
+
+
+export const updateProject = async (req,res) => {
+
+  const project = await Project.findOne({_id:req.params.id})
+  
+  
+  project.title =  req.body.title
+  project.subtitle =  req.body.subtitle
+  project.category =  req.body.category
+  project.client =  req.body.client
+  project.description =  req.body.description
+
+  project.save()
+  
+ 
+  res.redirect("/")
+
+}

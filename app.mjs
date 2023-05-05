@@ -1,6 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
-import { deleteProject, postProject } from "./controller/ProjectController.mjs";
+import { deleteProject, postProject, updateProject } from "./controller/ProjectController.mjs";
 import fileUpload from "express-fileupload";
 import { PageRouter } from "./routes/pageRoute.mjs";
 import methodOverride from "method-override";
@@ -37,6 +37,8 @@ app.use(
 app.use("/", PageRouter);
 app.post("/", postProject);
 app.delete("/:id", deleteProject);
+app.put("/:id",updateProject)
+
 
 app.listen(port, () => {
   console.log(`App is up on port ${port}`);

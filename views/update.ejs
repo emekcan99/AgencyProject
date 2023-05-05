@@ -1,0 +1,69 @@
+<%- include('partials/_header.ejs')-%>
+<section class="page-section" id="contact">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Add a project </h2>
+            <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+        </div>
+        <!-- * * * * * * * * * * * * * * *-->
+        <!-- * * SB Forms Contact Form * *-->
+        <!-- * * * * * * * * * * * * * * *-->
+        <!-- This form is pre-integrated with SB Forms.-->
+        <!-- To make this form functional, sign up at-->
+        <!-- https://startbootstrap.com/solution/contact-forms-->
+        <!-- to get an API token!-->
+        <form id="contactForm"  action="/<%= project._id%>?_method=PUT" method="POST"  enctype="multipart/form-data">
+            <div class="row align-items-stretch mb-5">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <!-- title input-->
+                        <input class="form-control" id="title" type="text" name="title" placeholder="title" data-sb-validations="required" value="<%=project.title%>"/>
+                        <div class="invalid-feedback" data-sb-feedback="title:required">A title is required.</div>
+                    </div>
+                    <div class="form-group">
+                        <!-- subtitle address input-->
+                        <input class="form-control" id="subtitle" name="subtitle" type="text" placeholder="subtitle" data-sb-validations="required,subtitle" value="<%=project.subtitle%>"/>
+                        <div class="invalid-feedback" data-sb-feedback="subtitle:required">An subtitle is required.</div>
+                        <div class="invalid-feedback" data-sb-feedback="subtitle:subtitle">subtitle is not valid.</div>
+                    </div>
+                    <div class="form-group mb-md-4">
+                        <!-- category number input-->
+                        <input class="form-control" id="category" name="category" type="text" placeholder="category" data-sb-validations="required" value="<%=project.category%>" />
+                        <div class="invalid-feedback" data-sb-feedback="category:required">A category is required.</div>
+                    </div>
+                    <div class="form-group mb-md-2">
+                        <!-- category number input-->
+                        <input class="form-control" id="client" name="client" type="text" placeholder="client" data-sb-validations="required" value="<%=project.client%>"/>
+                        <div class="invalid-feedback" data-sb-feedback="client:required">A client is required.</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group form-group-textarea mb-md-0">
+                        <!-- Message input-->
+                        <textarea class="form-control" id="description" placeholder="description" name="description" data-sb-validations="required"><%=project.description%></textarea>
+                        <div class="invalid-feedback" data-sb-feedback="description:required">A description is required.</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Submit success message-->
+            <!---->
+            <!-- This is what your users will see when the form-->
+            <!-- has successfully submitted-->
+            <div class="d-none" id="submitSuccessMessage">
+                <div class="text-center text-white mb-3">
+                    <div class="fw-bolder">Form submission successful!</div>
+                    To activate this form, sign up at
+                    <br />
+                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                </div>
+            </div>
+            <!-- Submit error message-->
+            <!---->
+            <!-- This is what your users will see when there is-->
+            <!-- an error submitting the form-->
+            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+            <!-- Submit Button-->
+            <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase" id="submitButton" type="submit">Update Project</button></div>
+        </form>
+    </div>
+</section>
